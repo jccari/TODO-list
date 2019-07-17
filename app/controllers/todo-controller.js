@@ -1,9 +1,18 @@
 const ObjectID = require('mongodb').ObjectID
+const path      = require('path');
 
 module.exports = function(app, db){
     return {
         index : (req, res) => {
-            res.send("TODO raiz");
+            var options = {
+                root: path.join(__dirname, '../../public/html'),
+                dotfiles: 'deny',
+                headers: {
+                    'x-timestamp': Date.now(),
+                    'x-sent': true
+                }
+            };
+            res.sendFile('index.html', options);
         },
 
         list : (req, res) => {

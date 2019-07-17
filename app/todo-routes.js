@@ -4,7 +4,7 @@ const ObjetctID = require('mongodb').ObjectID
 module.exports = function (app, db){
     controller = todoController(app,db);
     
-    //app.get('/', controller.index );
+    app.get('/', controller.index );
 
     app.get('/list', controller.list );
 
