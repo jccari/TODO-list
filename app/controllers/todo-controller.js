@@ -1,4 +1,4 @@
-const ObjetctID = require('mongodb').ObjectID
+const ObjectID = require('mongodb').ObjectID
 
 module.exports = function(app, db){
     return {
@@ -59,9 +59,9 @@ module.exports = function(app, db){
                 _id: ObjectID(req.params.id)
             };
             var update = { $set: {
-                                    owner: req.params.owner,
-                                    status: req.params.status,
-                                    content: req.params.content
+                                    owner: req.body.owner,
+                                    status: req.body.status,
+                                    content: req.body.content
                                 }};
             db.collection("todo-list").updateOne(query, update, (err, task) =>{
                 if (err) res.status(500).send("Error editando la tarea")
