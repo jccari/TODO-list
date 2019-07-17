@@ -14,5 +14,5 @@ module.exports = function (app, db){
 
     app.delete('/delete/:id', controller.delete );
 
-    app.put('/update/:id', controller.delete );
+    app.put('/update/:id', controller.edit );
 }
