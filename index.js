@@ -7,7 +7,7 @@ const app   = express();
 const db    = require('./config/db');
 const routes = require('./app/todo-routes')
 const dbPort = 8081
-
+app.set('port', process.env.PORT || dbPort);
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -30,8 +30,8 @@ client.connect(err => {
     const database = client.db("todo-list");
     // perform actions on the collection object
     routes(app, database);
-    app.listen(dbPort, ()=>{
-        console.log("[MongoDB] Listen on "+ dbPort +" port");
+    app.listen(dbPort, ()=>{app.listen(app.get('port'), ()=>{
+        console.log("[MongoDB] Listen on "+ app.get('port') +" port");
     })
 });
 
